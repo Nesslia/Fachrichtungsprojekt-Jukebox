@@ -9,15 +9,11 @@ namespace JukeboxProjekt
         {
 
             JukeboxBild.MyIMG("JukeBox.png");
-               //cursor feste position ?
-            while (true)
-            {
-                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-                if (keyInfo.Key == ConsoleKey.LeftArrow)
-                {
-                    Console.WriteLine("Linke Pfeiltaste wurde gedrückt."); // cw nicht notwendig ? 
-                }
-            }
+            //cursor feste position ?
+           
+
+            Steuerung steuerung = new Steuerung();
+            steuerung.StartSteuerung();
         }
 
     }
