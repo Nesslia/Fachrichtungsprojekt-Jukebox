@@ -11,7 +11,7 @@ namespace JukeboxProjekt
     internal class JukeboxBild
     {
 
-        internal static void MyIMG(string img_name) //hier wird der Name ünergeben zb. Bild.png
+        internal static void MyIMG(string img_name) //hier wird der Name übergeben zb. Bild.png
         {
             string gdir = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
             
