@@ -9,20 +9,23 @@ namespace JukeboxProjekt
 {
     public class Steuerung
     {
-        private List<(int, int)> positionen;
-        private int aktuellePosition;
-
-        public Steuerung()
-        {
-            positionen = new List<(int, int)>
+        private static List<(int, int)> positionen = new List<(int, int)>
             {
-                (38, 18), (46, 18), (54,18), 
-                (38, 21), (46, 21), (54,21)
+                (41, 20), (51,20), (60,20),
+                (41, 23), (51, 23), (60,23)
             };
-            //aktuellePosition = 0;
+
+        private static int aktuellePosition;
+        private static int letztePosition;
+        private Jukebox jukebox;
+        private static bool playerStop = true;
+        public Steuerung(Jukebox jukebox)
+        {
+            this.jukebox = jukebox;
         }
 
-        public void StartSteuerung()
+
+        public static void StartSteuerung()
         {
             Console.CursorVisible = true;
 
@@ -33,17 +36,35 @@ namespace JukeboxProjekt
 
                 switch (keyInfo.Key)
                 {
+                    
                     case ConsoleKey.LeftArrow:
+                        letztePosition = aktuellePosition;
                         aktuellePosition = (aktuellePosition % 3 == 0) ? aktuellePosition : aktuellePosition - 1;
                         break;
                     case ConsoleKey.RightArrow:
-                        aktuellePosition = (aktuellePosition % 3 == 2) ? aktuellePosition : aktuellePosition + 1;
+                        letztePosition = aktuellePosition;
+                        aktuellePosition = (aktuellePosition % 3 == 2) ? aktuellePosition : aktuellePosition + 1;       //bewegung des Cursors durch Pfeiltasten
                         break;
                     case ConsoleKey.UpArrow:
+                        letztePosition = aktuellePosition;
                         aktuellePosition = (aktuellePosition < 3) ? aktuellePosition : aktuellePosition - 3;  
                         break;
                     case ConsoleKey.DownArrow:
+                        letztePosition = aktuellePosition;
                         aktuellePosition = (aktuellePosition >= 3) ? aktuellePosition : aktuellePosition + 3;
+                        break;
+                    case ConsoleKey.Enter:
+                        if (playerStop == false)
+                        {
+                            Jukebox.LiedAbspielen(aktuellePosition);
+                            playerStop = true;
+                        }
+                        else
+                        {
+                            playerStop = false;
+                            Jukebox.LiedStoppen();
+                        }
+                        Thread.Sleep (300);
                         break;
                     case ConsoleKey.Escape:
                         return;
@@ -51,14 +72,20 @@ namespace JukeboxProjekt
             }
         }
 
-        private void RotePosition()
+        
+        
+        private static void RotePosition()
         {
-            Console.SetCursorPosition(positionen[aktuellePosition].Item1, positionen[aktuellePosition].Item2);
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.SetCursorPosition(positionen[letztePosition].Item1, positionen[letztePosition].Item2);
+            Console.Write(letztePosition+1);
+            Console.SetCursorPosition(positionen[aktuellePosition].Item1, positionen[aktuellePosition].Item2);  //angesteuerte "Knöpfe" sind nun rot hinterlegt
+           
             Console.BackgroundColor = ConsoleColor.DarkRed;
             Console.WriteLine(aktuellePosition+1);
             Console.ResetColor();
             
         }
-
+        
     }
 }

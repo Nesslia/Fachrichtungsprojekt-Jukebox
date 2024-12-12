@@ -48,26 +48,26 @@ namespace JukeboxProjekt
             Console.ForegroundColor = ConsoleColor.Black;
             Console.BackgroundColor = ConsoleColor.DarkGreen;
 
-            Console.SetCursorPosition(38, 18);
+            Console.SetCursorPosition(41, 20);
             Console.Write("1");
 
-            Console.SetCursorPosition(46, 18);
+            Console.SetCursorPosition(51, 20);
             Console.Write("2");
 
-            Console.SetCursorPosition(54, 18);
+            Console.SetCursorPosition(60, 20);
             Console.Write("3");
 
-            Console.SetCursorPosition(38, 21);
+            Console.SetCursorPosition(41, 23);
             Console.Write("4");
 
-            Console.SetCursorPosition(46, 21);
+            Console.SetCursorPosition(51, 23);
             Console.Write("5");
 
-            Console.SetCursorPosition(54, 21);
+            Console.SetCursorPosition(60, 23);
             Console.Write("6");
 
 
-            Console.SetCursorPosition(38, 18);
+            Console.SetCursorPosition(41, 20);
         }
     }
 }
