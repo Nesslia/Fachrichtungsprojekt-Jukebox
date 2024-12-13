@@ -12,13 +12,15 @@ namespace JukeboxProjekt
         public string Titel { get; set; }               //Title des Lieds
         public string Kuenstler { get; set; }
         public string Dateipfad { get; set; }             //Pfad zum Lied
-        
+        public string BildPfad { get; set; }                //pfad titlebilder der lieder
 
-        public Lied(string titel, string kuenstler, string dateipfad)
+
+        public Lied(string titel, string kuenstler, string dateipfad, string bildPfad)
         {
             Titel = titel;
             Kuenstler = kuenstler;
             Dateipfad = dateipfad;
+            BildPfad = bildPfad;
         }
     
 

@@ -11,37 +11,72 @@ namespace JukeboxProjekt
     internal class JukeboxBild
     {
 
-        internal static void MyIMG(string img_name) //hier wird der Name übergeben zb. Bild.png
+        internal static void MyIMG(string jukeboxBildName, string titelBildName = null)
         {
             string gdir = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
-            
-            gdir += @"\ressource\" + img_name;
-            int res_x = 100;
-            int res_y = 90;
+            string jukeboxPath = Path.Combine(gdir, "ressource", jukeboxBildName);
 
-
-            Bitmap image = new Bitmap(new Bitmap(gdir), new Size(res_x, res_y));
-            //Für res_x habe ich ein Feld mit int 240 und bei res_y ein int mit 100. Für die Bilder sollten ebenfalls die DIMENSIONEN 240px x 100px haben
-
-            VTConsole.Enable();
-
-            for (int y = 0; y <= res_y - 1; y = y + 2)
+            if (!File.Exists(jukeboxPath))                                                                          // checkt ob bild überhaupt existiert
             {
-                for (int x = 0; x <= res_x - 1; x++)
+                Console.WriteLine($"Jukeboxbild nicht gefunden: {jukeboxPath}");
+                return;
+            }
+
+            int res_x = 100;                                                                                            // Größe Jukebox
+            int res_y = 90;
+            int titleRes_x = 50;                                                                                        // Größe Titelbild
+            int titleRes_y = 45;
+            //position lässt sich trotz anpassen der Werte nicht ändern
+
+            using (Bitmap jukeboxImage = new Bitmap(jukeboxPath))
+            {
+                Bitmap resizedJukeboxImage = new Bitmap(jukeboxImage, new Size(res_x, res_y));
+
+                VTConsole.Enable();
+
+                Console.SetCursorPosition(0, 0);
+
+                int titelBildX = 20;                                                                 // Abstand zum Jukeboxbild
+                int titelBildY = 25;                                                                 // Abstand vom oberen Konsolenrand
+
+                
+                for (int y = 0; y < res_y; y += 2)                                                  // Ausgabe Jukeboxbild
                 {
-                    Color color = image.GetPixel(x, y);
-
-                    VTConsole.Write(((char)'\u2588').ToString(), Color.FromArgb(color.R, color.G, color.B));
-                    //Achtung hier wird die Nuget Bibliothek True Color Console
-
-
-                    Console.ForegroundColor = ConsoleColor.White;
+                    for (int x = 0; x < res_x; x++)
+                    {
+                        Color color = resizedJukeboxImage.GetPixel(x, y);
+                        VTConsole.Write(((char)'\u2588').ToString(), Color.FromArgb(color.R, color.G, color.B));
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
+
+                if (!string.IsNullOrEmpty(titelBildName))                                        // Überprüft, ob Titelbild vorhanden ist und gibt es aus
+                {
+                    string titelPath = Path.Combine(gdir, "ressource", titelBildName);
+                    if (File.Exists(titelPath))
+                    {
+                        using (Bitmap titelImage = new Bitmap(titelPath))
+                        {
+                            Bitmap resizedTitelImage = new Bitmap(titelImage, new Size(titleRes_x, titleRes_y));
+
+                            for (int y = 0; y < titleRes_y; y += 2)
+                            {
+                                Console.SetCursorPosition(res_x + 2, y / 2);
+                                for (int x = 0; x < titleRes_x; x++)
+                                {
+                                    Color color = resizedTitelImage.GetPixel(x, y);
+                                    VTConsole.Write(((char)'\u2588').ToString(), Color.FromArgb(color.R, color.G, color.B));
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Titelbild nicht gefunden: {titelPath}");
+                    }
+                }
 
                 VTConsole.Disable();
-
-
             }
 
 

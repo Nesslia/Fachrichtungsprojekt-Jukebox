@@ -54,15 +54,16 @@ namespace JukeboxProjekt
                         aktuellePosition = (aktuellePosition >= 3) ? aktuellePosition : aktuellePosition + 3;
                         break;
                     case ConsoleKey.Enter:
-                        if (playerStop == false)
+                        if (playerStop)
                         {
                             Jukebox.LiedAbspielen(aktuellePosition);
-                            playerStop = true;
+                            playerStop = false;
                         }
                         else
-                        {
-                            playerStop = false;
+                        {                            
                             Jukebox.LiedStoppen();
+                            
+                            playerStop = true;
                         }
                         Thread.Sleep (300);
                         break;
