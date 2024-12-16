@@ -26,8 +26,7 @@ namespace JukeboxProjekt
             int res_y = 90;
             int titleRes_x = 50;                                                                                        // Größe Titelbild
             int titleRes_y = 45;
-            //position lässt sich trotz anpassen der Werte nicht ändern
-
+            
             using (Bitmap jukeboxImage = new Bitmap(jukeboxPath))
             {
                 Bitmap resizedJukeboxImage = new Bitmap(jukeboxImage, new Size(res_x, res_y));
@@ -36,10 +35,7 @@ namespace JukeboxProjekt
 
                 Console.SetCursorPosition(0, 0);
 
-                int titelBildX = 20;                                                                 // Abstand zum Jukeboxbild
-                int titelBildY = 25;                                                                 // Abstand vom oberen Konsolenrand
-
-                
+                                                                                               
                 for (int y = 0; y < res_y; y += 2)                                                  // Ausgabe Jukeboxbild
                 {
                     for (int x = 0; x < res_x; x++)
@@ -58,14 +54,14 @@ namespace JukeboxProjekt
                         using (Bitmap titelImage = new Bitmap(titelPath))
                         {
                             Bitmap resizedTitelImage = new Bitmap(titelImage, new Size(titleRes_x, titleRes_y));
-
+                           
                             for (int y = 0; y < titleRes_y; y += 2)
                             {
-                                Console.SetCursorPosition(res_x + 2, y / 2);
+                                Console.SetCursorPosition(res_x + 24,3+ y / 2);                         // abstand Titlebild zum jukeboxbild/oberen Bildrand
                                 for (int x = 0; x < titleRes_x; x++)
-                                {
+                                {                                    
                                     Color color = resizedTitelImage.GetPixel(x, y);
-                                    VTConsole.Write(((char)'\u2588').ToString(), Color.FromArgb(color.R, color.G, color.B));
+                                    VTConsole.Write(((char)'\u2588').ToString(), Color.FromArgb(color.R, color.G, color.B));                                    
                                 }
                             }
                         }
@@ -75,7 +71,6 @@ namespace JukeboxProjekt
                         Console.WriteLine($"Titelbild nicht gefunden: {titelPath}");
                     }
                 }
-
                 VTConsole.Disable();
             }
 

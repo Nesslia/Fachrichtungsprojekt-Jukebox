@@ -27,7 +27,6 @@ namespace JukeboxProjekt
                 waveOutDevice.Stop();                                                        // stoppt das aktuell laufende Lied
                 waveOutDevice.Dispose();
             }
-
             
             Lied lied = lieder[index];                                                      // lädt und spielt das neue Lied
             JukeboxBild.MyIMG("JukeBox.png", Path.GetFileName(lied.BildPfad));
@@ -43,8 +42,7 @@ namespace JukeboxProjekt
             Console.BackgroundColor = ConsoleColor.Black;
             Console.WriteLine($"Jetzt wird gespielt: '{lied.Titel}' von '{lied.Kuenstler}'                 ");       
             
-            Console.ResetColor();
-           
+            Console.ResetColor();           
         }
 
         public static void LiedStoppen()
@@ -52,8 +50,7 @@ namespace JukeboxProjekt
             if (waveOutDevice != null)
             {
                 waveOutDevice.Stop();
-                waveOutDevice.Dispose();
-               
+                waveOutDevice.Dispose();               
             }
         }
 
