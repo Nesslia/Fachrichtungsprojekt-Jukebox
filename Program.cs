@@ -10,7 +10,7 @@ namespace JukeboxProjekt
         {
             JukeboxBild.MyIMG("JukeBox.png");
 
-            string[] mp3Pfad = { @"Lieder\TheBeattles-YellowSubmarine.wav", @"Lieder\FoolsGarden-LemonTree.wav", @"Lieder\Scorpions-WindOfChange.wav", @"Lieder\dmx - x_gon_give_it_to_ya.mp3", @"Lieder\fettes_brot-jein.mp3", @"Lieder\RickAstley-NeverGonnaGiveYouUp.wav" };
+            string[] mp3Pfad = { @"Lieder\TheBeattles-YellowSubmarine.wav", @"Lieder\FoolsGarden-LemonTree.wav", @"Lieder\Scorpions-WindOfChange.wav", @"Lieder\dmx-x_gon_give_it_to_ya.mp3", @"Lieder\fettes_brot-jein.mp3", @"Lieder\RickAstley-NeverGonnaGiveYouUp.wav" };
             string hauptOrdner = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
             string[] ganzerPfad = { Path.Combine(hauptOrdner, mp3Pfad[0]), Path.Combine(hauptOrdner, mp3Pfad[1]), Path.Combine(hauptOrdner, mp3Pfad[2]), Path.Combine(hauptOrdner, mp3Pfad[3]), Path.Combine(hauptOrdner, mp3Pfad[4]), Path.Combine(hauptOrdner, mp3Pfad[5]) };
             string[] coverImg = { "YellowSubmarine.png", "LemonTree.png", "scorpions.png", "dmxdog.png", "jein.png", "Rick.png" };
