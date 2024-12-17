@@ -38,7 +38,7 @@ namespace JukeboxProjekt
 
 
             Console.SetCursorPosition(120, 30);
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.BackgroundColor = ConsoleColor.Black;
             Console.WriteLine($"Jetzt wird gespielt: '{lied.Titel}' von '{lied.Kuenstler}'                 ");       
             

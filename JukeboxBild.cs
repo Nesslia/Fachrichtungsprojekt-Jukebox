@@ -34,7 +34,6 @@ namespace JukeboxProjekt
                 VTConsole.Enable();
 
                 Console.SetCursorPosition(0, 0);
-
                                                                                                
                 for (int y = 0; y < res_y; y += 2)                                                  // Ausgabe Jukeboxbild
                 {
@@ -57,7 +56,7 @@ namespace JukeboxProjekt
                            
                             for (int y = 0; y < titleRes_y; y += 2)
                             {
-                                Console.SetCursorPosition(res_x + 24,3+ y / 2);                         // abstand Titlebild zum jukeboxbild/oberen Bildrand
+                                Console.SetCursorPosition(res_x + 24 , 3+ y / 2);                         // abstand Titlebild zum jukeboxbild/oberen Bildrand
                                 for (int x = 0; x < titleRes_x; x++)
                                 {                                    
                                     Color color = resizedTitelImage.GetPixel(x, y);
@@ -73,7 +72,6 @@ namespace JukeboxProjekt
                 }
                 VTConsole.Disable();
             }
-
 
             Console.ForegroundColor = ConsoleColor.Black;
             Console.BackgroundColor = ConsoleColor.DarkGreen;
@@ -96,8 +94,8 @@ namespace JukeboxProjekt
             Console.SetCursorPosition(60, 23);
             Console.Write("6");
 
-
             Console.SetCursorPosition(41, 20);
         }
+
     }
 }
