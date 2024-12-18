@@ -1,13 +1,20 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics;
+using System.Drawing;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using TrueColorConsole;
 
 namespace JukeboxProjekt
 {
     internal class Program
     {
+
+
+        
         static void Main(string[] args)
         {
+
+
             JukeboxBild.MyIMG("JukeBox.png");
 
             string[] mp3Pfad = { @"Lieder\TheBeattles-YellowSubmarine.wav", @"Lieder\FoolsGarden-LemonTree.wav", @"Lieder\Scorpions-WindOfChange.wav", @"Lieder\dmx-x_gon_give_it_to_ya.mp3", @"Lieder\fettes_brot-jein.mp3", @"Lieder\RickAstley-NeverGonnaGiveYouUp.wav" };
